@@ -58,6 +58,7 @@ int main() {
         float lux = bh1705_read_luminance(i2c0);
         memset(lux_str, 0, sizeof(lux_str));
         snprintf(lux_str, sizeof(lux_str), "  %.2f lx   ", lux);
+        printf(strcat(lux_str,"\n"));
         // 16char width, 8 lines
         char *text[] = {
             lux_str,
