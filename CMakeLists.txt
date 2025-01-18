@@ -47,4 +47,7 @@ target_link_libraries(BH1750_Illuminance_Sensor pico_stdlib hardware_i2c)
 # create map/bin/hex file etc.
 pico_add_extra_outputs(BH1750_Illuminance_Sensor)
 
+# enable usb output, disable uart output
+pico_enable_stdio_usb(BH1750_Illuminance_Sensor 1)
+
 # add url via pico_set_program_url
