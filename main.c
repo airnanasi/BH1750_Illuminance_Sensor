@@ -12,6 +12,12 @@
 int main() {
     stdio_init_all();
 
+    // GPIO 25 is the on-board LED
+    bool led_state = false;
+    const uint LED_PIN = 25;    // GPIO 25 is the on-board LED
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
 #if !defined(i2c_default) || !defined(PICO_DEFAULT_I2C_SDA_PIN) || !defined(PICO_DEFAULT_I2C_SCL_PIN)
 #warning i2c / SSD1306_i2d example requires a board with I2C pins
     puts("Default I2C pins were not defined");
@@ -57,6 +63,10 @@ int main() {
     char lux_str[16];
 
     while (true) {
+        // Toggle the LED
+        gpio_put(LED_PIN, led_state);
+        led_state = !led_state;
+
         // Get the luminance value
         float lux = bh1705_read_luminance(i2c0);
         memset(lux_str, 0, sizeof(lux_str));
