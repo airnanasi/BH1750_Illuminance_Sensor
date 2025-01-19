@@ -32,6 +32,8 @@ int main() {
 
     // run through the complete initialization process
     SSD1306_init();
+    printf("Initialize SSD1306 done.\n");
+
 
     // Initialize render area for entire frame (SSD1306_WIDTH pixels by SSD1306_NUM_PAGES pages)
     struct render_area frame_area = {
@@ -50,6 +52,7 @@ int main() {
 
     // Initialize BH1705
     bh1705_init(i2c_default);
+    printf("Initialize BH1705 done.\n");
 
     char lux_str[16];
 
@@ -68,7 +71,7 @@ int main() {
             " ILLUMINANCE",
             " SENSOR TEST",
             " BY AIRNANASI",
-            "    2025",
+            " 2025 V0.0.1",
         };
 
         int y = 0;

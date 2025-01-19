@@ -2,10 +2,12 @@
 *.d
 
 # Object files
+build/
 *.o
 *.ko
 *.obj
 *.elf
+*.bak
 
 # Linker output
 *.ilk
